@@ -37,8 +37,7 @@ exports.updateQuizResult = async (qid, uid, body) => {
             $project: {
                 _id: 0,
                 category: 1,
-                questionDetails: 1,
-                options: { $size: '$options' }
+                questionDetails: 1
             }
         }
     ])

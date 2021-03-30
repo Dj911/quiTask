@@ -4,7 +4,6 @@ const option = joi.object({
     isCorrect: joi.boolean()
 })
 const joiSchema = joi.object({
-    user: joi.string().required(),
     category: joi.string().min(5).max(12),
     questionDetails: joi.string().required().min(5).max(50),
     options: joi.array().items(option),

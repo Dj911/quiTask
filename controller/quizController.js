@@ -24,13 +24,12 @@ exports.getQuizName = async (req, res, next) => {
 
 exports.newQuizQuestion = async (req, res, next) => {
     try {
-        req.body.user = req.params.id;
         req.body.quizId = req.params.qid;
-        /* const valid = joi.validate(req.body);
+        const valid = joi.validate(req.body);
         if (valid.error) {
             console.log('ERROR: ', valid.error.message)
-            return next(createError(400, valid.error.message, { expose: false })) 
-        } */
+            return next(createError(400, valid.error.message, { expose: false }))
+        }
         const data = await createQuiz(req.body);
         requestHandler(res, 200, 'Success!', data);
     } catch (err) {
