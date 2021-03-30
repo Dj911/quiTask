@@ -18,8 +18,7 @@ const userSchema = new mongoose.Schema({
     },
     token: String,
     tokenExpire: {
-        type: Date,
-        default: Date.now() + 5 * 60 * 60 * 1000
+        type: Date
     },
     createdAt: {
         type: Date,

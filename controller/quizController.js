@@ -4,28 +4,28 @@ const { createQuiz, newQuizName, getAllQuizName, getAllQuizQuestions } = require
 const { requestHandler } = require('../middlewares/requestHandler');
 const joi = require('../validation/quizValidation');
 
-exports.createQuizName = async (req,res,next)=>{
+exports.createQuizName = async (req, res, next) => {
     try {
         const data = await newQuizName(req.body)
         requestHandler(res, 200, 'Success!', data);
     } catch (err) {
-        return next(createError(400, err, { expose: false }))        
+        return next(createError(400, err, { expose: false }))
     }
 }
 
-exports.getQuizName = async (req,res,next)=>{
+exports.getQuizName = async (req, res, next) => {
     try {
         const data = await getAllQuizName();
         requestHandler(res, 200, 'Success!', data);
     } catch (err) {
-        return next(createError(400, err, { expose: false }));        
+        return next(createError(400, err, { expose: false }));
     }
 }
 
-exports.newQuiz = async (req, res, next) => {
+exports.newQuizQuestion = async (req, res, next) => {
     try {
         req.body.user = req.params.id;
-        req.body.quizId = req.params.qid;     
+        req.body.quizId = req.params.qid;
         /* const valid = joi.validate(req.body);
         if (valid.error) {
             console.log('ERROR: ', valid.error.message)
@@ -38,11 +38,11 @@ exports.newQuiz = async (req, res, next) => {
     }
 }
 
-exports.getAllQuizQuestion = async (req,res,next)=>{
+exports.getAllQuizQuestion = async (req, res, next) => {
     try {
         const data = await getAllQuizQuestions(req.params.qid);
-        requestHandler(res, 200, 'Success!', data);        
+        requestHandler(res, 200, 'Success!', data);
     } catch (err) {
-        return next(createError(400, err, { expose: false }))        
+        return next(createError(400, err, { expose: false }))
     }
 }

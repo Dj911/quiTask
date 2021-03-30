@@ -13,8 +13,8 @@ const quizCategorySchema = new mongoose.Schema({
         default: Date.now()
     },
     updatedAt: Date
-}, { collection: 'QuizCategory' })
+}, { collection: 'Name' })
 
-const quizCat = db.model('QuizCategory', quizCategorySchema)
+const quizCat = db.model('Name', quizCategorySchema)
 
 module.exports = quizCat;
