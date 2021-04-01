@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+const morgan = require('morgan');
+const logger = require('./middlewares/logger')
 
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/userRouter');
@@ -10,7 +11,9 @@ const quizRouter = require('./routes/quizRouter');
 
 const app = express();
 
-app.use(logger('dev'));
+// app.use(morgan('dev'));
+app.use(morgan("combined", { "stream": logger.stream }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

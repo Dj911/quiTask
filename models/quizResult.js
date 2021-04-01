@@ -17,7 +17,7 @@ const quizResultSchema = new mongoose.Schema({
                 type: mongoose.Types.ObjectId,
                 ref: 'Questions'
             },
-            userSelectedAnswer: Number           // The answer/s selected by the user            
+            userSelectedAnswer: String           // The answer/s selected by the user            
         }
     ],
     marksObtained: {                            // Total Marks obtained by user for this quiz
